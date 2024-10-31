@@ -1,0 +1,20 @@
+spring.config.activate.on-profile: dev
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/capstone
+    username: root
+    password: root1234!
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    defer-datasource-initialization: false
+  data:
+    redis:
+      port: 6380
+logging:
+  level:
+    org.hibernate.SQL: trace
