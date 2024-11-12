@@ -1,5 +1,7 @@
 package dev.capstone.capstone_server.domain;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import lombok.Getter;
 
 @Getter
 @Entity
-public class Subject {
+public class Subject implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
@@ -21,6 +23,11 @@ public class Subject {
 	}
 
 	public Subject(String name) {
+		this.name = name;
+	}
+
+	public Subject(Long id, String name) {
+		this.id = id;
 		this.name = name;
 	}
 }

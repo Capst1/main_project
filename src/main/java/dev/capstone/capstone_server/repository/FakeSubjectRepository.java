@@ -18,11 +18,16 @@ public class FakeSubjectRepository implements SubjectRepository {
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		return List.of(new Subject("fake subject"));
+		return List.of(new Subject(1234L, "fake subject"));
 	}
 
 	@Override
 	public Optional<Subject> findById(Long id) {
-		return Optional.of(new Subject("fake subject"));
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
+		return Optional.of(new Subject(1234L, "fake subject"));
 	}
 }

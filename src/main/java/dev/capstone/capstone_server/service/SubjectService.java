@@ -2,7 +2,6 @@ package dev.capstone.capstone_server.service;
 
 import java.util.List;
 
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +20,6 @@ public class SubjectService {
 		return subjectRepository.findAll().stream().map(SubjectResponse::from).toList();
 	}
 
-	@Cacheable(value = "subjectCacheStore", key = "#id")
 	public SubjectResponse getSubjectById(Long id) {
 		Subject subject = subjectRepository.findById(id).orElseThrow(RuntimeException::new);
 		return SubjectResponse.from(subject);

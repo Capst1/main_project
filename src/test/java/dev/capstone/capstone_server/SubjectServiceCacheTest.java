@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.test.context.ActiveProfiles;
 
 import dev.capstone.capstone_server.service.SubjectService;
 
+@EnableCaching
 @ActiveProfiles("test")
 @SpringBootTest(classes = TestConfig.class)
 public class SubjectServiceCacheTest {
@@ -27,7 +29,7 @@ public class SubjectServiceCacheTest {
 		start = System.currentTimeMillis();
 		subjectService.getAllSubjects();
 		long secondCallDuration = System.currentTimeMillis() - start;
-
+		System.out.println(secondCallDuration);
 		assertTrue(firstCallDuration > 3000);
 		assertTrue(secondCallDuration < 200); // 캐시된 응답은 바로 반환
 	}

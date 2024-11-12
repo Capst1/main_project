@@ -5,11 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import dev.capstone.capstone_server.domain.Subject;
 
-public record SubjectResponse(
-	Long id,
-	String name
-) {
-
+public record SubjectResponse(Long id, String name) {
 	@JsonCreator
 	public SubjectResponse(
 		@JsonProperty("id") Long id,
