@@ -14,7 +14,7 @@ spring:
     defer-datasource-initialization: false
   data:
     redis:
-      port: 6380
+      port: 6381
 logging:
   level:
     org.hibernate.SQL: trace
