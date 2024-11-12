@@ -17,7 +17,7 @@ public class Subject {
 	@Column(unique = true, nullable = false)
 	String name;
 
-	public Subject() {
+	protected Subject() {
 	}
 
 	public Subject(String name) {

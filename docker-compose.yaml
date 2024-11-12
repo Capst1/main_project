@@ -1,5 +1,5 @@
 services:
-  mysql:
+  capstone-mysql:
     image: mysql:latest
     container_name: capstone
     restart: always
@@ -11,7 +11,7 @@ services:
     ports:
       - "3307:3306"
 
-  redis:
+  capstone_redis:
     image: redis:latest
     container_name: redis
     ports:

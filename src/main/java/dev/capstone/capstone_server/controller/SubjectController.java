@@ -1,25 +1,25 @@
 package dev.capstone.capstone_server.controller;
 
-import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.capstone.capstone_server.controller.dto.SubjectResponse;
-import dev.capstone.capstone_server.repository.SubjectRepository;
+import dev.capstone.capstone_server.service.SubjectService;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/sugang")
+@RequestMapping("/api/subjects")
 public class SubjectController {
-	private final SubjectRepository subjectRepository;
+	private final SubjectService subjectService;
 
-	@GetMapping(value = "/all")
-	public ResponseEntity<List<SubjectResponse>> getAllSugang() {
-		List<SubjectResponse> subjects = subjectRepository.findAll().stream().map(SubjectResponse::from).toList();
-		return ResponseEntity.ok(subjects);
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<SubjectResponse> getSubject(@NotNull @PathVariable final Long id) {
+		SubjectResponse subject = subjectService.getSubjectById(id);
+		return ResponseEntity.ok(subject);
 	}
 }
