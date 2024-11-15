@@ -1,4 +1,5 @@
 .env
+prometheus/**
 
 HELP.md
 .gradle
